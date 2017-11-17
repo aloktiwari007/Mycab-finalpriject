@@ -1,0 +1,128 @@
+
+<style>
+ th, input {
+   text-align: center;
+   font-size:20px
+
+
+}
+</style>
+<div class="container">
+<div class="row">
+  <div class="col">
+
+    <form name="myform">
+
+      <strong style="font-size:.5cm">
+  Vehicle Type
+</strong>
+  <input type="text" ng-model="Data.tariffVehicleType" name=vtype  class="form-control plain" required />
+  <p ng-show="myform.vtype.$invalid && !myform.vtype.$pristine" class="help-block" style="color:red"><b>Enter Vehicle Type.</b></p>
+
+  <br/>
+<strong style="font-size:.5cm">
+  Peak hour Rate
+</strong>
+
+
+<!-- /^(\d)+$/ -->
+  <input type="text" ng-model="Data.peakRate" name="peakrate"  ng-pattern="/^[0-9]+(.[0-9]{0,2})?$/" class="form-control plain" required/>
+  <p ng-show="myform.peakrate.$invalid && !myform.peakrate.$pristine" class="help-block" style="color:red"><b>Enter valid Peak hour Rate.</b></p>
+  <br/>
+<strong style="font-size:.5cm">
+   Non Peak Hour Rate
+ </strong>
+  <input type="text" ng-model="Data.normalRate" name="nonpeakrate" ng-pattern="/^[0-9]+(.[0-9]{0,2})?$/"  class="form-control plain" required />
+  <p ng-show="myform.nonpeakrate.$invalid && !myform.nonpeakrate.$pristine" class="help-block" style="color:red"><b>Enter valid Non Peak hour Rate.</b></p>
+  <br/>
+
+  <label>
+    <strong style="font-size:.5cm">
+    Select Peak hour Time
+    </strong>
+  </label>
+  <select ng-model="Data.hour1" style="width:15%;" name="phour"  class="form-control plain" required>
+      <option   value="" disabled selected>hour</option>
+    <option ng-repeat="x in hour" value="{{x}}">{{x}}</option>
+  </select>
+
+  <!-- <span> -->
+  <select ng-model="Data.mints1" style="width:15%;margin-left:16%;margin-top:-3%" name="pmint"  class="form-control plain" required>
+      <option   value="" disabled selected>minits</option>
+    <option ng-repeat="x in mint" value="{{x}}">{{x}}</option>
+  </select>
+
+
+<!-- </span> -->
+  <select ng-model="Data.ampm" style="width:15%;margin-left:32%;margin-top:-3%" name="am"  class="form-control plain" required>
+      <option   value="AM" selected>AM</option>
+      <option   value="PM">PM</option>
+  </select>
+  <p ng-show="myform.am.$invalid && !myform.am.$pristine" class="help-block" style="color:red"><b>Select Time.</b></p>
+  <br/>
+  <label>
+      <strong style="font-size:.5cm">
+    End Peak hour Time
+  </strong>
+  </label>
+  <select ng-model="Data.hour2" style="width:15%;" name="ehour"  class="form-control plain" required>
+      <option   value="" disabled selected>hour</option>
+    <option ng-repeat="x in hour" value="{{x}}">{{x}}</option>
+  </select>
+
+  <select ng-model="Data.mints2" style="width:15%;margin-left:16%;margin-top:-3%" name="emint" class="form-control plain" required>
+      <option   value="" disabled selected>minits</option>
+    <option ng-repeat="x in mint" value="{{x}}">{{x}}</option>
+  </select>
+
+
+  <select ng-model="Data.ampm1" style="width:15%;margin-left:32%;margin-top:-3%" name="epm"  class="form-control plain" required>
+      <option   value="AM" selected="selected">AM</option>
+      <option   value="PM">PM</option>
+  </select>
+  <p ng-show="myform.epm.$invalid && !myform.epm.$pristine" class="help-block" style="color:red"><b>Select Time.</b></p>
+<br>
+<br>
+  <center><button ng-click="tariffdetails();button=false" class="form-control; btn btn-success" style="margin-bottom:12%;font-size:.5cm" ng-disabled="myform.$invalid">Save New Data</button></center>
+
+</form>
+
+<center><input type="text" placeholder="search" class="form-control" style="width:50%;font-size:2em" ng-model="data"/></center><br>
+<form name="myform1">
+
+
+<table class="table-responsive table-striped;label label-info" >
+  <tr>
+    <th>Vehicle Type</th>
+    <th>Peak hour Rate </th>
+    <th>Non Peak Hour Rate</th>
+    <th>Start Peak Time</th>
+    <th>End Peak Time</th>
+
+  </tr>
+  <tr ng-repeat="c in tariffdata | filter:data">
+
+
+    <td ><input type="text" value="{{c.Cabtype}}" ng-model="c.Cabtype" ng-disabled="button" name="cabtype" class="form-control" style="border:none" required/></td>
+    <td><input type="text" value="{{c.Peakrate}}" ng-model="c.Peakrate" ng-disabled='button' ng-pattern="/^[0-9]+(.[0-9]{0,2})?$/" class="form-control" style="border:none" ng-init="button=true" required/></td>
+    <td><input type="text" value="{{c.Normalrate}}" ng-model="c.Normalrate" ng-disabled='button' ng-init="button=true" ng-pattern="/^[0-9]+(.[0-9]{0,2})?$/" class="form-control" style="border:none" required/>
+  </td>
+
+    <td><input type="text" value="{{c.Startpeakhour}}" ng-model="c.Startpeakhour" ng-disabled='button' ng-init="button=true" class="form-control" style="border:none" required/></td>
+    <td><input type="text" value="{{c.Endpeakhour}}" ng-model="c.Endpeakhour" ng-disabled='button'  class="form-control" style="border:none" required />
+
+
+    </td>
+
+
+
+    <td><button class="btn btn-info" ng-click="editrecord();button=false" ng-show="button" ><span class="glyphicon glyphicon-edit"></span><button class="btn btn-info"  ng-hide="button"  ng-click="checktime(c);button=true" ng-disabled="myform1.$invalid" >update</td>
+    <td><button class="btn btn-info" ng-click="deletetariff(c)" ><span class="glyphicon glyphicon-trash"></span></td>
+  </tr>
+</table>
+
+</form>
+  </div>
+</div>
+
+</div>

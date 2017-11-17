@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            <form name="myform">
+                <input type="email" placeholder="Email" ng-model="user.email" name="email" class="form-control" required/><br>
+                <p ng-show="myform.email.$invalid && !myform.email.$pristine" class="help-block" style="color:red"><b>Enter Your Email-ID </b></p>
+                  <br>
+                <input type="password" placeholder="Password" ng-model="user.password" name="password" class="form-control" required /><br>
+                <p ng-show="myform.password.$invalid && !myform.password.$pristine" class="help-block" style="color:red"><b>Your Name is required.</b></p>
+                  <br>
+              <center>  <a href="" class="btn btn-success" ng-click="login()" style="margin-top: 20px" ng-disabled="myform.$invalid">Login</a>
+
+            </form>
+              <button class="btn btn-warning" ng style="margin-top: 20px" ng-click='register()'>Register Now</button></center>
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>

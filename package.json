@@ -1,0 +1,24 @@
+{
+  "name": "alok",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "angular-datetime-inputs": "^0.1.30",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "express-fileupload": "^0.1.3",
+    "jsonwebtoken": "^7.4.1",
+    "mongoose": "^4.10.6",
+    "mongoose-timezone": "^1.1.0",
+    "multer": "^1.3.0",
+    "socket.io": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

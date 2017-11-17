@@ -1,0 +1,149 @@
+<script src="./public/js/jspdf.min.js"></script>
+<script type="text/javascript">
+
+</script>
+
+<style>
+ th, tr,td{
+   text-align: center;
+   font-size:20px;
+padding: 10px;
+
+
+},
+
+</style>
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-12">
+
+
+                              <center><p style="margin:50px"><strong style="font-size:25px;  "  ng-if="data.length==0" class="label label-info">
+                                <b>
+                                  <u>No Invoice Data</u>
+                                </b>
+                              </strong>
+                              </p>
+                              </center>
+
+
+
+
+          <center><p style="margin:50px"><strong style="font-size:25px;  " ng-if="data.length>0" class="label label-info">
+            <b>
+              <u>MY Cab Receipt</u>
+            </b>
+          </strong>
+          </p>
+          </center>
+          <br><br>
+
+          <center><input type="text" placeholder="search" class="form-control" style="width:50%;font-size:2em" ng-model="data1"/></center>
+          <br><br>
+
+            <table  class="table table-hover table-responsive table-striped ; label-info"ng-if="data.length>0" >
+              <thead>
+              <tr>
+                <th>Pickup Date and Time</th>
+                <th>Pick Up Location</th>
+                <th>Drop location</th>
+                <th>Distance</th>
+                <th>Total Fare</th>
+              </tr>
+            </thead>
+              <tr ng-repeat="s in data | filter:data1">
+                <td>{{s.PickupDate}}</td>
+                <td>{{s.Pickuplocation}}</td>
+                <td>{{s.Deastinationlocation}}</td>
+                <td>{{s.Distance}}</td>
+
+                <td>{{s.Fare}}</td>
+                <td>
+                  <a href="" ng-click="printbill(s)" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-download-alt"></span>
+                </td>
+              </tr>
+
+            </table>
+
+
+              <div id="content"  ng-if="data.length>0">
+              <br>
+                <br>
+                <br>
+                <br>
+<br>
+<br>
+<br>
+
+
+
+<strong style="font-size:25px ">
+                                    <h4 id="invoice">                                       </h4><br><br>
+                                      <h5 id="recit">                                        </h5>
+                <b>
+                  <table  class="table table-hover table-responsive table-striped ; label-info " >
+                    <thead>
+                    <tr>
+                      <th style="text-align:center;border:none;"  id="abc">                        MY Cab Invoice </th>
+                    </tr>
+                  </thead>
+                </table>
+
+
+
+
+                </b>
+              </strong>
+
+
+        <br>
+        <br>
+            <h3 id="name"></h3>
+
+
+        <center>
+
+
+
+<br>
+<br>
+<br>
+
+                            <table  class="table table-hover table-responsive table-striped ; label-info">
+                              <thead>
+                              <tr>
+                                <th>Pickup Date</th>
+                                <th>Pick Up Location</th>
+                                <th>Drop location</th>
+                                <th>Distance</th>
+                                <th>Total Fare</th>
+                              </tr>
+                            </thead>
+                              <tr>
+                                <td id="date" width="210px"></td>
+                                <td id="loct" width="300px"></td>
+                                <td id="dest" width="300px"></td>
+                                <td id="distance" width="180px"></td>
+
+                                <td id="fare" width="200px"></td>
+
+                              </tr>
+
+                            </table>
+
+                            <h4 id="amount">                                       </h4>
+
+
+
+
+          </div>
+
+
+          <!-- <a href="javascript:getpdf()">Download PDF</a> -->
+        </div>
+
+    </div>
+</div>

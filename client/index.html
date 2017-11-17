@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="Cabbooking">
+  <head>
+
+    <!-- <base href="#"/> -->
+    <meta charset="utf-8">
+    <title></title>
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>
+
+
+
+
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <!-- <script src="./public/js/jquery-3.2.0.min.js"></script> -->
+    <!-- <script src="./public/js/bootstrap.min.js"></script> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYDfG-C4NuOEBj1aRBIHNi-ApfLmaQae0&libraries=places,drawing,geometry"></script>
+    <script src="./public/js/angular.js"></script>
+    <script src="./public/js/angular-route.js"></script>
+    <script src="./public/js/angular-cookies.min.js"></script>
+  <script src="./public/js/ngStorage.min.js"></script>
+    <script src="./app.js"></script>
+
+<link rel="stylesheet" href="./public/css/bootstrap.min.css">
+
+
+
+<!-- <script src="/socket.io/socket.io.js"></script> -->
+    <script src="./controller/HomeController.js"></script>
+    <script src="./controller/BookingController.js"></script>
+    <script src="./controller/ProfileController.js"></script>
+    <script src="./controller/RegisterController.js"></script>
+    <script src="./controller/LoginController.js"></script>
+    <script src="./controller/ChangepasswordController.js"></script>
+    <script src="./controller/LogoutController.js"></script>
+    <script src="./controller/InvoiceController.js"></script>
+    <script src="./controller/DriverprofileController.js"></script>
+    <script src="./controller/TariffController.js"></script>
+    <script src="./controller/CustTariffController.js"></script>
+    <script src="./controller/DriverController.js"></script>
+    <script src="./controller/AdminHomeController.js"></script>
+    <script src="./controller/DriverHomeController.js"></script>
+    <script src="./services/AuthenticationService.js"></script>
+<script>
+var a=sessionStorage.getItem('cust_id')
+
+console.log(a);
+var b=true;
+if(a!=null)
+{
+b=true;
+}
+
+</script>
+
+    <nav class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                    </button>
+                      <a class="navbar-brand" href="#/!">MY Cab</a>
+                    </div>
+
+                       <div class="collapse navbar-collapse"  id="myNavbar" >
+                         <ul class="nav navbar-nav navbar-right">
+                           <li><a href="#!home">Home</a></li>
+                           <li  ng-hide=booking><a href="#!booking">Booking</a></li>
+                           <li  ng-hide=signup><a href="#!signup">Register</a></li>
+                           <li ng-hide=login><a href="#!login">Login</a></li>
+                           <li  ng-hide=profile><a href="#!profile">Profile</a></li>
+                           <li  ng-hide=tariff><a href="#!tariff">Tariff</a></li>
+                           <li  ng-hide=custtariff><a href="#!custtariff">Tariff</a></li>
+                           <li  ng-hide=addcab><a href="#!driver">Add cab</a></li>
+                           <li  ng-hide=invoice><a href="#!invoice">Invoice</a></li>
+                           <li  ng-hide=driverhome><a href="#!driverhome">Manage Rides</a></li>
+                           <li  ng-hide=adminhome><a href="#!adminhome">Advance Booking</a></li>
+
+                           <li  ng-hide=driverprofile><a href="#!driverprofile">Profile</a></li>
+                           <li  ng-hide=changepassword><a href="#!changepassword">Change password</a></li>
+                           <li  ng-hide=logout><a href="#!logout">LogOut</a></li>
+                           <li  ng-hide=usernav><a  style="font-size:15px;hover:none;background-color:blue" ><b>Wellcome</b>  <span style="font-size:20px" class="badge">{{custname1}}</span></a></li>
+                           <!-- <li><a href="#!Tariff">Tariff</a></li> -->
+                        <!-- <li><a href="#/home"><i class="fa fa-home"></i> Home</a></li>
+                        <li><a href="#/home"><i class="fa fa-home"></i> Track</a></li>
+                        <li><a href="#/home"><i class="fa fa-home"></i> Fares</a></li>
+                        <li><a href="#/home"><i class="fa fa-home"></i> Mobile</a></li>
+                        <li><a href="#/home"><i class="fa fa-home"></i> offer</a></li>
+                        <li><a href="#/home"><i class="fa fa-home"></i> Recepit</a></li>
+                        <li><a href="#/booking"><i class="fa fa-shield"></i> Booking</a></li>
+                        <li><a href="#/register"><i class="fa fa-shield"></i> Register</a></li> -->
+
+                    </ul>
+                  </div>
+                </div>
+                </nav>
+
+
+
+  </head>
+
+
+
+
+
+
+  <body background-color="">
+
+
+
+  <div ng-view></div>
+  <footer>
+<div style="background-color:black;margin-top: 70%;height:auto;color:white"><center><strong >© WebSite Design and Devloped by Alok Kumar Tiwari</strong></center>
+</div>
+</footer>
+  </body>
+</html>

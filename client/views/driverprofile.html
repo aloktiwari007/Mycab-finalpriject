@@ -1,0 +1,164 @@
+<style>
+ th, tr,td{
+   text-align: center;
+   font-size:20px;
+padding: 10px;
+
+
+},
+
+</style>
+
+<div class="container-fluid" style="padding:50px">
+    <div class="row">
+        <div class="col-sm-12">
+          <span style="color:red;font-size:.8cm;font-weight:bold;"><center><u>Your Rides</u></center></span><br>
+
+          <center><input type="text" placeholder="search" class="form-control" style="width:50%;font-size:2em" ng-model="data"/></center>
+          <br><br>
+
+
+  <center>
+          <table class="table-responsive table-striped ; label-info " ng-if="client.length>0">
+             <thead>
+               <tr>
+                 <th>Booking ID</th>
+                  <th>Customer Name</th>
+                  <th>Customer MobileNo</th>
+                  <th>Booking Type</th>
+                  <th>Pickup location</th>
+                  <th>pickup Date and Time</th>
+                  <th>Destination</th>
+                  <!-- <th>Total bill</th> -->
+               </tr>
+             </thead>
+             <tbody>
+               <tr ng-repeat="s in client |filter:data ">
+                 <td>
+                   {{s._id}}
+                 </td>
+                <td>
+                  {{s.Custname}}
+                </td>
+                <td>
+                  {{s.Custmobileno}}
+                </td>
+                <td>
+                  {{s.Bookingtype}}
+                </td>
+
+                <td>
+                {{s.Pickuplocation}}
+                </td>
+                <td>
+
+                    {{s.PickupDate}}
+                </td>
+                <td>
+                  {{s.Deastinationlocation}}
+                </td>
+                <!-- <td>
+                  {{s.Fare}}
+                </td> -->
+                <!-- <td>
+                  <a href="" ng-click="delete(s)" class="btn btn-info btn-lg">
+          <span class="glyphicon glyphicon-trash"></span>
+        </a>
+                </td> -->
+               </tr>
+             </tbody>
+           </table>
+  </center>
+
+           <center><p style="margin:50px"><strong style="font-size:25px;  "  ng-if="client1.length==0" class="label label-info">
+             <b>
+               <u>Ride Data Not Available</u>
+             </b>
+           </strong>
+           </p>
+           </center>
+
+           <!-- <center><p style="margin:50px"><strong style="font-size:25px;  "  ng-if="client1.length==0" class="label label-info">
+             <b>
+               <u>You did't book any cab till now</u>
+             </b>
+           </strong>
+           </p>
+           </center>
+
+
+           <br>
+
+
+
+
+    <span style="color:red;font-size:.8cm;font-weight:bold;"><center><u>Booking History</u></center></span><br>
+
+
+
+
+
+
+
+            <table class="table table-hover"  ng-if="client.length>0">
+               <thead>
+                 <tr>
+                    <th>Driver Name</th>
+                    <th>Driver MobileNo</th>
+                    <th>Booking Type</th>
+                    <th>vehicle Number</th>
+                    <th>Pickup location</th>
+                    <th>Pickup Date and Time</th>
+                    <th>Destination</th>
+                    <th>Total bill</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr ng-repeat="d in client ">
+                  <td>
+                    {{d.Drivername}}
+                  </td>
+                  <td>
+                    {{d.Drivermobilenumber}}
+                  </td>
+                  <td>
+                    {{d.Bookingtype}}
+                  </td>
+                  <td>
+                    {{d.Vehiclenumber}}
+                  </td>
+                  <td>
+                  {{d.Pickuplocation}}
+                  </td>
+                  <td>
+
+                      {{d.PickupDate}}
+                  </td>
+                  <td>
+                    {{d.Deastinationlocation}}
+                  </td>
+                  <td>
+                    {{d.Fare}}
+                  </td>
+                  <td>
+                    <a href="" ng-click="delete(d)" class="btn btn-info btn-lg">
+            <span class="glyphicon glyphicon-trash"></span>
+          </a>
+                  </td>
+                 </tr>
+               </tbody>
+             </table>
+
+
+             <center><p style="margin:50px"><strong style="font-size:25px;  "  ng-if="client.length==0" class="label label-info">
+               <b>
+                 <u>No data for booking history</u>
+               </b>
+             </strong>
+             </p>
+             </center> -->
+
+        </div>
+
+    </div>
+</div>

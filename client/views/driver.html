@@ -1,0 +1,110 @@
+<style>
+ th, input {
+   text-align: center;
+   font-size:17px
+
+
+}
+</style>
+
+
+
+<div class="container-fulid">
+    <div class="row">
+        <div class=col-lg-1></div>
+        <div class="col-lg-4">
+
+            <form name="myform" ng-submit="submitForm(myform.$valid)" novalidate>
+
+            <center><strong style="font-size:25px" class="label label-info"><b><u>Driver Details</u></b></strong></center><br>
+                <input style="margin-top:12px" name="name" type="text" placeholder="Driver Name" ng-model="user.name" class="form-control" required />
+                <p ng-show="myform.name.$invalid && !myform.name.$pristine" class="help-block" style="color:red"><b>Your Name is required.</b></p>
+                  <br>
+                <input type="text" placeholder="Driver Address" ng-model="user.address" name="address" class="form-control" required />
+                  <p ng-show="myform.address.$invalid && !myform.address.$pristine" class="help-block" style="color:red"><b>Your Address is required.</b></p>
+                <br>
+
+                <input type="text" placeholder="Driver Mobile" ng-model="user.phone" ng-pattern="/^[0-9]{10,10}$/" name="mobile" class="form-control" required  />
+                  <p ng-show="myform.mobile.$invalid && !myform.mobile.$pristine" class="help-block" style="color:red"><b>Your Phone Number is required.</b></p>
+
+                <br>
+
+                <input type="email" placeholder="Driver Email" ng-model="user.email" name="email" class="form-control" required />
+
+                <p ng-show="myform.email.$invalid && !myform.email.$pristine" class="help-block" style="color:red"><b>Your Email is required.</b></p>
+                <br>
+
+                <input type="text" placeholder="DL Number" name="dl" ng-model="user.dl" class="form-control" required/>
+
+                  <p ng-show="myform.dl.$invalid && !myform.dl.$pristine" class="help-block" style="color:red"><b>Your Driving Licence Number is required.</b></p>
+                <br>
+                <center><strong style="font-size:25px" class="label label-info"><b><u>Cab Details<u><b></strong><center><br>
+                <input type="text" placeholder="Vehicle Name" name="vn" ng-model="user.vname" class="form-control" required />
+                      <p ng-show="myform.vn.$invalid && !myform.vn.$pristine" class="help-block" style="color:red"><b>Your Vehicle Name is required.</b></p>
+
+                <br>
+
+                <select class="form-control" ng-model=user.vtype name="vt" required >
+                  <option value="" disabled="true"> Select vehicleType</option>
+                  <option ng-repeat="d in cabtype" value={{d.Cabtype}}>{{d.Cabtype}}</option>
+
+                </select>
+                <p ng-show="myform.vt.$invalid && !myform.vt.$pristine" class="help-block" style="color:red"><b>Select Your Vehicle Type.</b></p>
+
+                <br>
+
+
+                <input type="text" placeholder="Vehicle Number" ng-model="user.vnumber" name="vnumber" class="form-control" required />
+                <p ng-show="myform.vnumber.$invalid && !myform.vnumber.$pristine" class="help-block" style="color:red"><b>Your Vehicle Registration Number is required.</b></p>
+
+                <br>
+                <input type="text" placeholder="Vehicle Make" name="vm" ng-model="user.vmake" class="form-control" required />
+                <br>
+                <p ng-show="myform.vm.$invalid && !myform.vm.$pristine" class="help-block" style="color:red"><b>Your Vehicle Make is required.</b></p>
+              <center>  <button class="btn btn-success" ng-click="driverdetails()" style="margin-top: 20px;font-size:30px" ng-disabled="myform.$invalid">save</button>
+            </center>
+            </form>
+        </div>
+        <div class="col-lg-1"></div>
+        <div class="col-lg-5">
+          <center><strong style="font-size:25px" class="label label-info"><b><u>Driver and Cab Details</u></b></strong></center><br><br>
+          <center><input type="text" placeholder="search" class="form-control" style="width:50%;font-size:2em" ng-model="data"/></center><br>
+          <form name="myform1" ng-submit="submitForm(myform1.$valid)" novalidate>
+
+
+          <table class="table-responsive table-striped;label label-info" >
+ <thead>
+   <tr>
+     <th >Name</th>
+     <th >Address</th>
+     <th >Contact Number </th>
+     <th >Email</th>
+     <th >Vehicle Type</th>
+     <th >Vehicle Number</th>
+   </tr>
+ </thead>
+ <tbody>
+   <tr  ng-repeat="d in driverdata |filter:data">
+
+      <td ><input type="text" name="name" value="{{d.Name}}" ng-model="d.Name" ng-disabled="button" class="form-control" style="border:none" required/>
+
+      </td>
+      <td><input type="text" value="{{d.Address}}" ng-model="d.Address" ng-disabled='button' class="form-control" style="border:none" ng-init="button=true" required/></td>
+      <td><input type="text" value="{{d.MobileNo}}"  ng-model="d.MobileNo"  ng-disabled='button' ng-init="button=true" class="form-control" style="border:none" required/></td>
+      <td><input type="text" value="{{d.Email}}" ng-model="d.Email" ng-disabled='true' ng-init="button=true" class="form-control" style="border:none" required/></td>
+      <td><input type="text" value="{{d.Vehicletype}}" ng-model="d.Vehicletype" ng-disabled='button'  class="form-control" style="border:none" required />
+
+
+      </td>
+
+      <td><input type="text" value="{{d.Vehiclenumber}}" ng-model="d.Vehiclenumber" ng-disabled='button' class="form-control" style="border:none" ng-init="button=true" required/></td>
+      <td><button class="btn btn-info" ng-click="editrecord();button=false" ng-show="button" ><span class="glyphicon glyphicon-edit"><button class="btn btn-info"  ng-hide="button" ng-disabled="myform1.$invalid"   ng-click="updaterecord(d);button=button2">update</td>
+      <td><button class="btn btn-info" ng-click="deletedriver(d)" ><span class="glyphicon glyphicon-trash"></span></td>
+   </tr>
+ </tbody>
+
+</table>
+</form>
+        </div>
+    </div>
+</div>

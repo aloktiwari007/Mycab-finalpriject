@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+
+            <center><strong style="font-size:25px" class="label label-info"><b><u>Create Your Account</u></b></strong></center><br><br>
+            <form name="myform">
+            <input placeholder="Email Address" name="email" ng-model="data.email" type="email" class="form-control" required/><br>
+            <p ng-show="myform.email.$invalid && !myform.email.$pristine" class="help-block" style="color:red"><b>Please Enter valid Email ID.</b></p>
+            <br>
+            <input placeholder="Password" ng-model="data.password" name="password" type="password" class="form-control" required/><br>
+            <p ng-show="myform.password.$invalid && !myform.password.$pristine" class="help-block" style="color:red"><b>Please Enter the password</b></p>
+            <br>
+            <input placeholder="Confirm Password" ng-model="data.cnfPassword" name=cpassword type="password" class="form-control" required /><br>
+            <p ng-show="myform.cpassword.$invalid && !myform.cpassword.$pristine" class="help-block" style="color:red"><b>Please Enter Confirm Password</b></p>
+            <br>
+            <input placeholder="Name" ng-model="data.name" name="name" type="text" class="form-control" required /><br>
+            <p ng-show="myform.name.$invalid && !myform.name.$pristine" class="help-block" style="color:red"><b>Please Enter Your Name</b></p>
+            <br>
+
+            <input placeholder="Address" type="text" ng-model="data.address" name="address" class="form-control" required /><br>
+            <p ng-show="myform.address.$invalid && !myform.address.$pristine" class="help-block" style="color:red"><b>Please Enter Your Address</b></p>
+            <br>
+            <input placeholder="Mobile Number" name="mobile" ng-model="data.phone" ng-pattern="/^[0-9]{10,10}$/" type="text" class="form-control" required /><br>
+            <p ng-show="myform.mobile.$invalid && !myform.mobile.$pristine" class="help-block" style="color:red"><b>Please Enter Your Mobile Number</b></p>
+            <br>
+
+          <center>  <a  class="btn btn-success" ng-click="register()" style="margin-top: 20px" ng-disabled="myform.$invalid">Submit</a></center>
+
+            </form>
+            </div>
+
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>

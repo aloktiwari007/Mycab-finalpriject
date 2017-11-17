@@ -1,0 +1,55 @@
+
+<style>
+ th, td {
+   text-align: center;
+   font-size:20px;
+   padding:10px
+
+
+}
+</style>
+<div class="container">
+<div class="row">
+  <div class="col">
+
+    <center><p style="margin:50px"><strong style="font-size:25px;  "  class="label label-info">
+      <b>
+        <u>Tariff Details</u>
+      </b>
+    </strong>
+    </p>
+    </center>
+<center>
+  <center><input type="text" placeholder="search" class="form-control" style="width:50%;font-size:2em" ng-model="data"/></center><br><br>
+
+<table class="table-responsive table table-striped; label-info " >
+  <tr >
+    <th>Vehicle Type</th>
+    <th>Peak hour Rate </th>
+    <th>Non Peak Hour Rate</th>
+    <th>Start Peak Time</th>
+    <th>End Peak Time</th>
+
+  </tr>
+  <tr ng-repeat="c in tariffdata | filter:data">
+
+
+    <td >{{c.Cabtype}}</td>
+    <td>{{c.Peakrate}}</td>
+    <td>{{c.Normalrate}}</td>
+
+
+    <td>{{c.Startpeakhour}}</td>
+    <td>{{c.Endpeakhour}}</td>
+
+
+
+
+  </tr>
+</table>
+
+<center>
+  </div>
+</div>
+
+</div>
