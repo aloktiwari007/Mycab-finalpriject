@@ -11,6 +11,7 @@ $scope.login=function(){
                   {
                     sessionStorage.setItem('cust_id',response.data.udata.Email);
                     sessionStorage.setItem('cust_name',response.data.udata.Name);
+                    sessionStorage.setItem('cust_type',response.data.udata.Usertype);
                       sessionStorage.setItem('nav',true);
                   //  $rootScope.a=true;
                       $location.path('/booking');
@@ -45,7 +46,7 @@ $scope.login=function(){
                   {
                     sessionStorage.setItem('driver_id',response.data.udata.Email);
                       sessionStorage.setItem('driver_name',response.data.udata.Name);
-
+                      sessionStorage.setItem('cust_type',response.data.udata.Usertype);
                         $rootScope.invoice=true;
                     $rootScope.driverhome=false;
                     $rootScope.logout=false;
@@ -72,7 +73,7 @@ $scope.login=function(){
                   {
                       sessionStorage.setItem('admin_id',response.data.udata.Email);
                         sessionStorage.setItem('admin_name',response.data.udata.Name);
-
+                        sessionStorage.setItem('cust_type',response.data.udata.Usertype);
 
 
 

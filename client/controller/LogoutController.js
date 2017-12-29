@@ -1,6 +1,11 @@
 angular.module('Cabbooking').controller('LogoutController',function($scope,$http,$location,AuthenticationService,$rootScope){
 
 var logout=function(){
+AuthenticationService.Logout({
+
+//  console.log("logout12");
+})
+  console.log("logout");
   var socket1 = io.connect('http://localhost:8080');
   //  socket1.emit('my other event', { lat :"huj" });
   socket1.disconnect();
