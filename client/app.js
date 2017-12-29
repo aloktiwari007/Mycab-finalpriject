@@ -107,7 +107,10 @@ app.run(function($rootScope,$cookies,$http,$sessionStorage,$location){
   var custname=sessionStorage.getItem('cust_name');
   var drivername=sessionStorage.getItem('driver_name');
   var adminname=sessionStorage.getItem('admin_name');
-  console.log("value of sessionStorage nav"+driver);
+var type2=sessionStorage.getItem('cust_type');
+console.log("data in type1"+$rootScope.type1);
+
+  console.log("value of sessionStorage nav"+type2);
   console.log("value of sessionStorage nav"+cust);
     //$rootScope.b=false;
     if(cust!=null)
@@ -194,8 +197,7 @@ app.run(function($rootScope,$cookies,$http,$sessionStorage,$location){
         $rootScope.usernav=true;
     }
 
-
-
+$rootScope.type1=type2;
 
 // -----------------------------------------------------------------------------------------
 
@@ -211,15 +213,54 @@ if($sessionStorage.tokenDetails){
 $rootScope.$on('$locationChangeStart',function(event,next,current){
 
 var publicpages=['/','/login','/signup','/home'];
+var custpages=['/home','/booking','/profile','/custtariff','/invoice','/changepassword','/logout'];
+var Adminpages=['/adminhome','/driver','/tariff','/changepassword','/home','/','/logout'];
+var driverpages=['/driverhome','/home','/driverprofile','/changepassword','/','/logout']
+// var driverpages=[]
+
+
 var authUser=$cookies.getObject('authUser');
 if(authUser!=undefined){
   var loggedInuser=authUser.currentUser.userInfo;
 
 }
 var restrictedpage=publicpages.indexOf($location.path())===-1;
+var custpage=custpages.indexOf($location.path())===-1;
+var Adminpage=Adminpages.indexOf($location.path())===-1;
+var driverpage=driverpages.indexOf($location.path())===-1;
+var type2=sessionStorage.getItem('cust_type');
+console.log("value of log "+type2);
 if(restrictedpage && !$sessionStorage.tokenDetails && $location.path()!=''){
+
+  $location.path('/login');
+
+
+
+}
+console.log("this data is rootScope"+type2);
+ if(custpage && $sessionStorage.tokenDetails  && type2=='Customer'){
+
+
   $location.path('/login');
 }
+else if(Adminpage && $sessionStorage.tokenDetails  && type2=='Admin' ){
+
+
+  $location.path('/login');
+}
+else if(driverpage && $sessionStorage.tokenDetails  && type2=='driver' ){
+
+
+  $location.path('/login');
+}
+// else if(!Adminpage && $sessionStorage.tokenDetails  && type2!='Admin' ){
+//
+//
+//   $location.path('/login');
+// }
+// if( $sessionStorage.tokenDetails && (type2=='Customer' || type2=='driver')  ){
+//   $location.path('/login');
+// }
 
 
 });
